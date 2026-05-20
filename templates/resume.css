@@ -1,0 +1,280 @@
+.resume-page {
+  width: 210mm;
+  min-height: 297mm;
+  max-height: 297mm;
+  background: #ffffff;
+  color: #111111;
+  box-shadow: 0 20px 70px rgb(15 23 42 / 0.16);
+  font-family: "Microsoft YaHei", "Noto Sans SC", "PingFang SC", Arial, sans-serif;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  font-size: 9.2pt;
+  font-weight: 400;
+  line-height: 1.25;
+  padding: 12mm 14mm;
+}
+
+.resume-page.resume-page-compact {
+  font-size: 8.7pt;
+  line-height: 1.18;
+  padding: 10.8mm 12.5mm;
+}
+
+body,
+.resume-page {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "PingFang SC", Arial, sans-serif;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+.resume-page,
+.resume-page p,
+.resume-page li,
+.resume-page span,
+.resume-page div {
+  font-weight: 400;
+}
+
+.resume-header {
+  text-align: center;
+  padding-bottom: 1.4mm;
+}
+
+.resume-header h1 {
+  margin: 0 0 0.7mm;
+  color: #111111;
+  font-size: 17.5pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+.resume-page.resume-page-compact .resume-header h1 {
+  font-size: 16.4pt;
+  margin-bottom: 0.45mm;
+}
+
+.resume-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 2.6mm;
+  color: #222222;
+  font-size: 8.5pt;
+  line-height: 1.2;
+}
+
+.resume-contact span {
+  white-space: nowrap;
+}
+
+.resume-section {
+  margin-top: 2mm;
+}
+
+.resume-page.resume-page-compact .resume-section {
+  margin-top: 1.35mm;
+}
+
+.resume-section h2 {
+  margin: 0 0 1mm;
+  padding-bottom: 0.5mm;
+  border-bottom: 1.2px solid #222222;
+  color: #111111;
+  font-size: 11.4pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.16;
+}
+
+.resume-page.resume-page-compact .resume-section h2 {
+  margin-bottom: 0.7mm;
+  padding-bottom: 0.35mm;
+  font-size: 10.8pt;
+}
+
+.resume-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4mm;
+  align-items: baseline;
+}
+
+.resume-skills-list {
+  margin: 0.6mm 0 0;
+  padding-left: 4.2mm;
+  list-style: disc outside;
+}
+
+.resume-page.resume-page-compact .resume-skills-list,
+.resume-page.resume-page-compact .resume-project ul {
+  padding-left: 3.4mm;
+}
+
+.resume-skills-list li {
+  margin: 0 0 0.45mm;
+  padding-left: 0.5mm;
+}
+
+.resume-skills-list strong,
+.resume-project li strong {
+  color: #111111;
+  font-weight: 600;
+}
+
+.resume-projects {
+  display: grid;
+  gap: 1.3mm;
+}
+
+.resume-page.resume-page-compact .resume-projects {
+  gap: 0.8mm;
+}
+
+.resume-project,
+.resume-education {
+  break-inside: avoid;
+}
+
+.resume-project h3 {
+  margin: 0;
+  color: #111111;
+  font-size: 10.2pt;
+  font-weight: 700;
+  line-height: 1.22;
+}
+
+.school-title {
+  margin-right: 2mm;
+  color: #111111;
+  font-size: 10.1pt;
+  font-weight: 700;
+}
+
+.resume-education-main {
+  margin: 0;
+  color: #111111;
+  font-size: 10pt;
+  font-weight: 700;
+  line-height: 1.22;
+}
+
+.resume-page .education-school-line {
+  font-weight: 700;
+}
+
+.resume-page .education-school-line span {
+  font-weight: 700;
+}
+
+.resume-meta,
+.resume-link {
+  margin: 0;
+  color: #222222;
+  font-size: 8.5pt;
+  line-height: 1.18;
+}
+
+.resume-link {
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.resume-context {
+  margin: 0.5mm 0 0;
+  color: #111111;
+  font-size: 8.6pt;
+  line-height: 1.2;
+}
+
+.resume-project ul {
+  margin: 0.6mm 0 0;
+  padding-left: 4.2mm;
+  list-style: disc outside;
+}
+
+.resume-project li {
+  display: list-item;
+  list-style: disc outside;
+  margin: 0 0 0.35mm;
+  padding-left: 0.5mm;
+}
+
+.resume-project li::marker,
+.resume-skills-list li::marker {
+  color: #111111;
+}
+
+.resume-project li strong {
+  font-weight: 700 !important;
+}
+
+.resume-page.resume-page-compact .resume-project li,
+.resume-page.resume-page-compact .resume-skills-list li {
+  margin-bottom: 0.18mm;
+  padding-left: 0.3mm;
+}
+
+.resume-education {
+  display: grid;
+  gap: 0.45mm;
+  color: #111111;
+}
+
+.resume-education p {
+  margin: 0;
+}
+
+@media screen and (max-width: 1100px) {
+  .resume-page {
+    transform-origin: top center;
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff;
+  }
+
+  body,
+  .resume-page {
+    font-weight: 400;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .resume-page {
+    box-shadow: none;
+    height: 297mm;
+    margin: 0;
+  }
+
+  .resume-page li,
+  .resume-page p,
+  .resume-page span {
+    font-weight: 400;
+  }
+
+  .resume-page strong,
+  .resume-page b {
+    font-weight: 600;
+  }
+
+  .resume-page .education-school-line,
+  .resume-page .education-school-line span {
+    font-weight: 700;
+  }
+
+  .resume-header h1,
+  .resume-section h2,
+  .resume-project h3,
+  .resume-education-main,
+  .education-school-line,
+  .section-title,
+  .project-name,
+  .resume-name {
+    font-weight: 700;
+  }
+}
