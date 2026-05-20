@@ -1,43 +1,45 @@
-# Deployment Checklist
+# 部署检查清单
 
-## Before Pushing to GitHub
+## 推送到 GitHub 前
 
-- [ ] `.env.local` is not tracked.
-- [ ] No real OpenAI API key is committed.
-- [ ] No personal resume PDF is committed.
-- [ ] No real `resume-master.json` is committed.
-- [ ] `data/` and `output/` are ignored or contain only sanitized files outside Git tracking.
-- [ ] Public README uses the project name `CareerFit Agent`.
-- [ ] Run `npm run lint`.
-- [ ] Run `npm run build`.
+- [ ] `.env.local` 没有被 Git 跟踪。
+- [ ] 没有提交真实 OpenAI API Key。
+- [ ] 没有提交个人简历 PDF。
+- [ ] 没有提交真实 `resume-master.json`。
+- [ ] `data/` 和 `output/` 已被忽略，或只包含不会被提交的本地文件。
+- [ ] 公开 README 使用统一项目名 `CareerFit Agent`。
+- [ ] 已运行 `npm run lint`。
+- [ ] 已运行 `npm run build`。
 
-## Vercel Project Settings
+## Vercel 项目设置
 
-- Install command: `npm install`
-- Build command: `npm run build`
-- Output directory: leave unset
-- Framework preset: Next.js
+- Install Command：`npm install`
+- Build Command：`npm run build`
+- Output Directory：留空
+- Framework Preset：Next.js
 
-Environment variables:
+需要配置的环境变量：
 
 - `OPENAI_API_KEY`
 - `OPENAI_MODEL_DEEP`
 - `OPENAI_MODEL_FAST`
 - `AI_MODEL_TIER`
 
-## Post-Deploy Smoke Test
+## 部署后 Smoke Test
 
-- [ ] Home page opens.
-- [ ] No Master state shows the empty import preview, not default personal data.
-- [ ] `/api/ai-status` returns `configured=true` when the Vercel environment has `OPENAI_API_KEY`.
-- [ ] PDF upload parses a resume.
-- [ ] JD analysis returns a result.
-- [ ] Tailored resume generation returns a result.
-- [ ] `qualityReview`, `atsReview`, and `comparisonReview` are present in tailor responses.
-- [ ] PDF export succeeds.
-- [ ] If PDF export fails, capture Vercel function logs and error message for a focused serverless Chromium fix.
-- [ ] Browser console has no obvious runtime errors.
+- [ ] 首页可以正常打开。
+- [ ] 没有 Master 简历时，页面显示空白导入态，而不是默认个人数据。
+- [ ] 配置 `OPENAI_API_KEY` 后，`/api/ai-status` 返回 `configured=true`。
+- [ ] PDF 上传可以解析简历。
+- [ ] JD 分析可以返回结果。
+- [ ] 定制简历可以生成。
+- [ ] `/api/tailor-resume` 返回中包含 `qualityReview`、`atsReview` 和 `comparisonReview`。
+- [ ] PDF 导出可以成功。
+- [ ] 如果 PDF 导出失败，需要记录 Vercel Function Logs 和错误信息，再单独修复 Serverless Chromium 兼容问题。
+- [ ] 浏览器 console 没有明显运行时错误。
 
-## Known Deployment Risk
+## 已知部署风险
 
-The PDF export route uses Playwright Chromium. It works in local development, but Vercel serverless compatibility must be verified after deployment. A follow-up may be needed to use a Vercel-compatible Chromium package or an alternate PDF rendering strategy.
+当前 PDF 导出依赖 Playwright Chromium。本地开发环境可以运行，但 Vercel Serverless 环境需要部署后单独验证。
+
+如果 `/api/export-pdf` 在线上失败，后续可能需要接入 Vercel 兼容的 Chromium 方案，或调整 PDF 渲染策略。
