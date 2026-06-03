@@ -9,6 +9,8 @@ import { runResumeParseDiagnostics } from "@/lib/resume-parse-diagnostics";
 
 const maxPdfSizeBytes = 10 * 1024 * 1024;
 
+export const runtime = "nodejs";
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();

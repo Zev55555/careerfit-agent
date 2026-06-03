@@ -6,6 +6,8 @@ export async function extractPdfText(buffer: Buffer): Promise<string> {
     throw new Error("PDF 文件为空。");
   }
 
+  await ensurePdfJsNodeGlobals();
+
   const { PDFParse } = await import("pdf-parse");
   const workerPath = path.join(
     process.cwd(),
@@ -32,6 +34,20 @@ export async function extractPdfText(buffer: Buffer): Promise<string> {
   } finally {
     await parser.destroy();
   }
+}
+
+async function ensurePdfJsNodeGlobals() {
+  const globals = globalThis as Record<string, unknown>;
+
+  if (globals.DOMMatrix && globals.Path2D && globals.ImageData) {
+    return;
+  }
+
+  const canvas = await import("@napi-rs/canvas");
+
+  globals.DOMMatrix ??= canvas.DOMMatrix;
+  globals.Path2D ??= canvas.Path2D;
+  globals.ImageData ??= canvas.ImageData;
 }
 
 function normalizePdfText(text: string) {
